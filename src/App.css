@@ -15,15 +15,27 @@ button:hover {
   background: #c23866;
   color: #fff;
 }
-.board {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 5% 10%;
-  gap: 25px;
+.grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 25px;
 }
 .card-front {
+  width: 300px;
+  height: 300px;
   border: 2px solid #000;
   border-radius: 10px;
   background: #fff;
   padding: 15px;
+}
+.card-back {
+  margin-right: 0;
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  background: #fff;
+  padding: 15px;
+  /* background-image: url(../public/Orange_question_mark.svg); */
+  background-position: center;
 }
