@@ -2,8 +2,10 @@ import back from "../../assets/svg/Orange_question_mark.svg";
 import "./style.css";
 import { v4 as uuidv4 } from "uuid";
 
-export default function singleCard({ card }) {
-  const handleClick = () => {};
+export default function singleCard({ card, handlePick }) {
+  const handleClick = () => {
+    handlePick(card);
+  };
   return (
     <div className="card" key={uuidv4()}>
       <div>
