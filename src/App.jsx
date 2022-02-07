@@ -8,6 +8,7 @@ const App = () => {
   const [images, setImages] = useState([]);
   const [pickFirst, setPickFirst] = useState(null);
   const [pickSecond, setPickSecond] = useState(null);
+  const [disabled, setDisabled] = useState(false);
   useEffect(() => {
     (async () => {
       const res = await getImages(5);
@@ -20,6 +21,7 @@ const App = () => {
   };
   useEffect(() => {
     if (pickFirst && pickSecond) {
+      setDisabled(true);
       if (pickFirst.id === pickSecond.id) {
         setImages((prevImages) => {
           return prevImages.map((el) => {
@@ -44,6 +46,7 @@ const App = () => {
   const resetPicks = () => {
     setPickFirst(null);
     setPickSecond(null);
+    setDisabled(false);
   };
 
   return (
@@ -62,6 +65,7 @@ const App = () => {
             handlePick={handlePick}
             card={card}
             flipped={card === pickFirst || card === pickSecond || card.matched}
+            disabled={disabled}
           />
         ))}
       </div>

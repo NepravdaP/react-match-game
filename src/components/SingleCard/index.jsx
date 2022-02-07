@@ -2,9 +2,9 @@ import back from "../../assets/svg/Orange_question_mark.svg";
 import "./style.css";
 // import { v4 as uuidv4 } from "uuid";
 
-export default function singleCard({ card, handlePick, flipped }) {
+export default function singleCard({ card, handlePick, flipped, disabled }) {
   const handleClick = () => {
-    handlePick(card);
+    if (!disabled) handlePick(card);
   };
   return (
     <div className="card">
