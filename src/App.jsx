@@ -21,16 +21,30 @@ const App = () => {
   useEffect(() => {
     if (pickFirst && pickSecond) {
       if (pickFirst.id === pickSecond.id) {
+        setImages((prevImages) => {
+          return prevImages.map((el) => {
+            if (el.id === pickFirst.id) {
+              return { ...el, matched: true };
+            } else {
+              return el;
+            }
+          });
+        });
         console.log("Its match");
-        setPickFirst(null);
-        setPickSecond(null);
+
+        resetPicks();
       } else {
+        setTimeout(() => resetPicks(), 1500);
+
         console.log("Its not match");
-        setPickFirst(null);
-        setPickSecond(null);
       }
     }
   }, [pickFirst, pickSecond]);
+
+  const resetPicks = () => {
+    setPickFirst(null);
+    setPickSecond(null);
+  };
 
   return (
     <div className="App">
@@ -44,7 +58,11 @@ const App = () => {
       </button>
       <div className="grid">
         {images.map((card) => (
-          <SingleCard handlePick={handlePick} card={card} />
+          <SingleCard
+            handlePick={handlePick}
+            card={card}
+            flipped={card === pickFirst || card === pickSecond || card.matched}
+          />
         ))}
       </div>
     </div>

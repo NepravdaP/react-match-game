@@ -12,5 +12,6 @@ export const shuffleCards = (collection) => {
       .map((value) => ({ value, sort: Math.random() }))
       .sort((a, b) => a.sort - b.sort)
       .map(({ value }) => value)
+      .map((el) => Object.assign(el, { matched: false }))
   );
 };
